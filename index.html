@@ -6,42 +6,40 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
         <div class="calculator">
-            <div class="display">
-                123456
-            </div>
+            <div class="display">0</div>
             <div class="buttons">
 
                 <div class="top-row">
                     <button id="clear">Clear</button>
                     <button>+/-</button>
-                    <button id="divide">&#247</button>
+                    <button class="operator" id="divide">&#247</button>
                 </div>
 
                 <div class="second-row">
-                    <button id="seven">7</button>
-                    <button id="eight">8</button>
-                    <button id="nine">9</button>
-                    <button id="multiply">&#215</button>
+                    <button class="number" id="seven">7</button>
+                    <button class="number" id="eight">8</button>
+                    <button class="number" id="nine">9</button>
+                    <button class="operator" id="multiply">&#215</button>
                 </div>
 
                 <div class="third-row">
-                    <button id="four">4</button>
-                    <button id="five">5</button>
-                    <button id="six">6</button>
-                    <button id="subtract">-</button>
+                    <button class="number" id="four">4</button>
+                    <button class="number" id="five">5</button>
+                    <button class="number" id="six">6</button>
+                    <button class="operator" id="subtract">-</button>
                 </div>
 
                 <div class="second-row">
-                    <button id="one">1</button>
-                    <button id="two">2</button>
-                    <button id="three">3</button>
-                    <button id="add">+</button>
+                    <button class="number" id="one">1</button>
+                    <button class="number" id="two">2</button>
+                    <button class="number" id="three">3</button>
+                    <button class="operator" id="add">+</button>
                 </div>
 
                 <div class="bottom-row">
-                    <button id="zero">0</button>
+                    <button class="number" id="zero">0</button>
                     <button id="decimal">.</button>
                     <button id="equals">=</button>
                 </div>

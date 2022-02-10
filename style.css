@@ -4,4 +4,6 @@
 
 .display {
     height: 30px;
+    width: 100px;
+    text-align: right;
 }
