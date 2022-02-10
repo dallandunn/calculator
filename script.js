@@ -20,6 +20,11 @@ function operate(operator, num1, num2) {
 
 const display = document.querySelector('.display');
 const numberButtons = document.querySelectorAll('.number');
+const clearButton = document.querySelector('#clear')
+
+clearButton.addEventListener('click', () => {
+    display.textContent = 0;
+});
 
 numberButtons.forEach((number) => {
     number.addEventListener('click', () => {
