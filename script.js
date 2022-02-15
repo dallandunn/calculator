@@ -24,6 +24,7 @@ const numberButtons = document.querySelectorAll('.number');
 const clearButton = document.querySelector('#clear')
 const operatorButtons = document.querySelectorAll('.operator');
 const equalsButton = document.querySelector('#equals')
+const decimal = document.querySelector('#decimal');
 
 let firstNumber = 0;
 let currentOperation;
@@ -35,12 +36,21 @@ clearButton.addEventListener('click', () => {
 
 numberButtons.forEach((number) => {
     number.addEventListener('click', () => {
-        if (display.textContent === '0') {
+        if (display.textContent.split('.')[1] === 0) {
+            display.textContent = display.textContent.split('.')[1] + '.' + number.textContent;
+        }
+
+        if (display.textContent === '0' || display.id === "answer") {
+            display.removeAttribute('id');
             display.textContent = number.textContent;
         } else {
             display.textContent += number.textContent;
         }
     });
+
+decimal.addEventListener('click', () => {
+    display.textContent = (display.textContent + '.').slice(0,2);
+});
 
 })
 
@@ -62,4 +72,5 @@ equalsButton.addEventListener('click', () => {
     let output = operate(window[currentOperation], firstNumber, display.textContent);
     console.log(output);
     display.textContent = Math.round(output * 100000000) / 100000000;
+    display.id = "answer"
 });
