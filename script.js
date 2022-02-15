@@ -25,6 +25,8 @@ const clearButton = document.querySelector('#clear')
 const operatorButtons = document.querySelectorAll('.operator');
 const equalsButton = document.querySelector('#equals')
 const decimal = document.querySelector('#decimal');
+const negative = document.querySelector('#negative')
+const backspace = document.querySelector('#backspace')
 
 let firstNumber = 0;
 let currentOperation;
@@ -36,9 +38,6 @@ clearButton.addEventListener('click', () => {
 
 numberButtons.forEach((number) => {
     number.addEventListener('click', () => {
-        if (display.textContent.split('.')[1] === 0) {
-            display.textContent = display.textContent.split('.')[1] + '.' + number.textContent;
-        }
 
         if (display.textContent === '0' || display.id === "answer") {
             display.removeAttribute('id');
@@ -48,10 +47,25 @@ numberButtons.forEach((number) => {
         }
     });
 
+})
+
 decimal.addEventListener('click', () => {
-    display.textContent = (display.textContent + '.').slice(0,2);
+    if (!(display.textContent.includes('.'))){
+        display.textContent = display.textContent + '.';
+    }
 });
 
+negative.addEventListener('click', () => {
+    display.textContent = '-' + display.textContent;
+})
+
+backspace.addEventListener('click', () => {
+    if (display.textContent.length > 1 && display.textContent.split('')[0] !== '-') {
+        display.textContent = display.textContent.slice(0, -1);
+    } else {
+        display.textContent = 0;
+    }
+    
 })
 
 operatorButtons.forEach((operator) => {
@@ -71,6 +85,7 @@ operatorButtons.forEach((operator) => {
 equalsButton.addEventListener('click', () => {
     let output = operate(window[currentOperation], firstNumber, display.textContent);
     console.log(output);
+    firstNumber = 0;
     display.textContent = Math.round(output * 100000000) / 100000000;
     display.id = "answer"
 });
