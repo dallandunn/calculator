@@ -56,11 +56,16 @@ decimal.addEventListener('click', () => {
 });
 
 negative.addEventListener('click', () => {
-    display.textContent = '-' + display.textContent;
+    if (display.textContent.split("")[0] !== '-') {
+        display.textContent = '-' + display.textContent;
+    } else {
+        display.textContent = display.textContent.slice(1);
+    }
+    
 })
 
 backspace.addEventListener('click', () => {
-    if (display.textContent.length > 1 && display.textContent.split('')[0] !== '-') {
+    if (display.textContent.length > 1) {
         display.textContent = display.textContent.slice(0, -1);
     } else {
         display.textContent = 0;
